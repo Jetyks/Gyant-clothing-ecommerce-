@@ -1,7 +1,11 @@
-export default function Home() {
+import NavBar from "../components/NavBar"
+import Home from "../pages/home"
+
+export default function caca() {
   return (
     <>
-      <h2>funcionando</h2>
+     <NavBar/>
+     <Home/>
     </>
   )
 }
