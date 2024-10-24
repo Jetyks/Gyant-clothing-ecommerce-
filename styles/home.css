@@ -1,0 +1,8 @@
+.home-container{
+    height: 560px;
+    width: 100%;
+    /* background: rgb(223,241,255);
+    background: linear-gradient(180deg, rgba(223,241,255,1) 0%, rgba(42,67,101,1) 100%); */
+    background: rgb(223,241,255);
+    background: linear-gradient(0deg, rgba(223,241,255,1) 54%, rgba(166,204,255,1) 100%);
+}
