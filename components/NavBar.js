@@ -9,12 +9,12 @@ const NavBar = () => {
   return (
     <>
      <Head>
-        <title>My E-commerce</title>
+        <title>GYANT</title>
       </Head>
       <nav className="relative flex justify-end items-center h-16 bg-white border-none px-4 py-2.5" >
         <div className="absolute inset-0 flex items-center justify-center">
           {/* Logo */}
-          <a href="/" className="text-3xl font-bold text-yellow-950 col-start-5 col-span-4">
+          <a href="/" className="text-3xl font-bold text-yellow-950 col-start-5 col-span-4 font-maven">
             {/* Y O U N G L A */}
             G Y A N T
             {/* V A R A D O */}

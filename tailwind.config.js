@@ -5,10 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Define your custom colors here
         customYellow: '#fcfcdc',
         customGreen: '#17BF63',
-        // Puedes seguir agregando más colores personalizados
+      },
+      fontFamily: {
+        'maven': ['"Maven Pro"', 'serif'], 
       },
     },
   },
