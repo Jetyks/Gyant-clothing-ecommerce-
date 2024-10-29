@@ -3,6 +3,7 @@ import { useProducts } from '../../context/ProductsContext'
 import Head from 'next/head'
 import SizeList from '../../components/SizeList'
 import { useEffect, useState } from 'react'
+import Button from '../../components/Button'
 
 const ProductDetails= () => {
     const router = useRouter()
@@ -43,7 +44,12 @@ const ProductDetails= () => {
               <h4 className='text-base'>Size guide</h4>
             </div>
             <div className='mt-2 flex flex-row gap-2 h-10 w-full'>
-              <SizeList></SizeList>
+              <SizeList/>
+            </div>
+            <div className='mt-5 flex flex-col gap-2 h-28 w-full'>
+                <Button title='Buy now' color='white' hoverBgColor='yellow-900' borderColor='none' backgroundColor='yellow-950'/>
+                {/* <button className='bg-yellow-950 text-white hover:bg-gray-50'>Hola</button> */}
+                <Button title='Add to cart' color='yellow-950' hoverBgColor='gray-50' borderColor='yellow-900' />
             </div>
            </div>
       </div>
