@@ -8,9 +8,6 @@ import BagIcon from './BagIcon';
 const NavBar = () => {
   return (
     <>
-     <Head>
-        <title>GYANT</title>
-      </Head>
       <nav className="relative flex justify-end items-center h-16 bg-white border-none px-4 py-2.5" >
         <div className="absolute inset-0 flex items-center justify-center">
           {/* Logo */}

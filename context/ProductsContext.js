@@ -10,7 +10,8 @@ const ProductsProvider = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        if(router.pathname === '/'){
+        if(router.pathname){
+          console.log(router.pathname)
             setProductsForHim(productsForMen)
             setLoading(false)
         }

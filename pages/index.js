@@ -1,10 +1,8 @@
-import NavBar from "../components/NavBar"
 import Home from "../pages/home"
 
-export default function caca() {
+export default function index() {
   return (
     <>
-     <NavBar/>
      <Home/>
     </>
   )
