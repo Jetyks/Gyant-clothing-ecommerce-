@@ -5,12 +5,16 @@ import SizeList from '../../components/SizeList'
 import { useEffect, useState } from 'react'
 import Button from '../../components/Button'
 
+import ProductGallery from '../../components/ProductGallery'
+
 const ProductDetails= () => {
     const router = useRouter()
     const {id} = router.query
     const {productsForHim} = useProducts()
-    /* const product = productsForHim.find((product) => product.id === parseInt(id)) */
+    
     const [product, setProduct] = useState(null);
+    /* const [selectedImage, setSelectedImage] = useState(mainImage); */
+
 
     useEffect(() => {
       console.log('Products:', productsForHim); 
@@ -28,15 +32,18 @@ const ProductDetails= () => {
       <Head>
         <title>GYANT</title>
       </Head>
-      <div className='mt-10 flex flex-row h-auto px-24 border-2 border-black'>
-        <div className='flex flex-row justify-center gap-4 px-4 h-[540px] w-auto bg-slate-500'>
-          <div className='w-20 border-2 border-blue-800'> f</div>
-          <img className='h-full w-auto' src={product.image} alt={product.title}/>
+      <div className='mt-10 flex flex-row h-auto px-24 '>
+        <div className='h-[540px] w-auto'>
+          <ProductGallery product={product}/>
+          {/* <div className='w-24 border-2 border-blue-800'>
+            <ThumbnailGallery product={product}/>
+          </div>
+          <img className='h-full w-auto' src={selectedImage} alt='Main product'/> */}
         </div>
         <div className='ml-10 w-5/12 '>
             <div className='relative mt-2 pb-4'>
-                <h3 className='text-2xl font-normal text-yellow-950'>{product.title}</h3>
-                <p className='text-xl font-normal text-yellow-800'>${product.price}</p>
+                <h3 className='text-2xl font-normal text-yellow-950'>{product.productName}</h3>
+                <p className='mt-1 text-xl font-normal text-yellow-800'>${product.price}</p>
                 <div className="absolute bottom-0 left-0 w-full h-[1px] bg-yellow-900 bg-opacity-40"></div>
             </div>
             <div>
