@@ -4,16 +4,16 @@ export const productsForMen = [
     {
         id: 1,
         title: '100 - Classic Performance Tee',
-        fit: 'regular',
+        fit: 'Regular',
         design: 'A versatile performance tee designed for workouts and casual wear. Made with moisture-wicking fabric for all-day comfort.',
         material: '100% Polyester',
         price: 45,
-        image: 'https://www.youngla.com/cdn/shop/files/YLA9.2e5.jpg?v=1729119769&width=1000'
+        image: 'https://www.youngla.com/cdn/shop/files/YLA6.jpg?v=1719336288&width=800'
     },
     {
         id: 2,
         title: '101 - Sports Graphic Tee',
-        fit: 'slim',
+        fit: 'Slim',
         design: 'Show off your style with this eye-catching graphic tee. Perfect for layering or wearing solo.',
         material: '60% Cotton, 40% Polyester',
         price: 40.00,
@@ -22,7 +22,7 @@ export const productsForMen = [
     {
         id: 3,
         title: '102 - Moisture-Wicking Crew Neck',
-        fit: 'regular',
+        fit: 'Regular',
         design: 'This crew neck tee is designed for ultimate comfort, featuring breathable fabric to keep you cool during workouts.',
         material: '100% Polyester',
         price: 50.00,
@@ -31,7 +31,7 @@ export const productsForMen = [
     {
         id: 4,
         title: '103 - Lightweight Workout Tee',
-        fit: 'athletic',
+        fit: 'Athletic',
         design: 'A lightweight tee that combines style and functionality, perfect for high-intensity workouts.',
         material: '100% Polyester',
         price: 42.00,
@@ -40,7 +40,7 @@ export const productsForMen = [
     {
         id: 5,
         title: '104 - Casual Short Sleeve Tee',
-        fit: 'loose',
+        fit: 'Loose',
         design: 'This casual tee is perfect for everyday wear, providing a relaxed fit and comfort.',
         material: '100% Cotton',
         price: 36.00,
@@ -49,7 +49,7 @@ export const productsForMen = [
     {
         id: 6,
         title: '105 - Performance Muscle Tee',
-        fit: 'muscle',
+        fit: 'Muscle',
         design: 'Designed for gym enthusiasts, this muscle tee showcases your physique while providing comfort.',
         material: '100% Polyester',
         price: 38.00,

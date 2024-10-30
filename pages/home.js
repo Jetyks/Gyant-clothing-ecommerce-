@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
     <section>
-      <div className='flex justify-center items-center gap-7 h-24 border border-black'>
+      <div className='flex justify-center items-center gap-7 h-24 bg-gray-100 border border-black '>
         <button className='h-auto text-xl border border-black text-yellow-950'>FOR HIM</button>
         <button className='h-auto text-xl border border-black text-yellow-950'>FOR HER</button>
       </div>
