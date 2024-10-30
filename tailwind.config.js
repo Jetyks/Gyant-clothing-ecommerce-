@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   safelist: [
-    'text-yellow-900', 'text-blue-500', 'hover:bg-yellow-900', 'border-red-500',
+    'text-yellow-900', 'text-blue-500', 'hover:bg-yellow-900', 'border-yellow-500',
     {
       pattern: /text-(yellow|blue|red|green|gray)-(100|200|300|400|500|600|700|800|900)/,
     },
