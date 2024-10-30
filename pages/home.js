@@ -8,8 +8,8 @@ const Home = () => {
     <>
     <section>
       <div className='flex justify-center items-center gap-7 h-24 bg-gray-100 border border-black '>
-        <button className='h-auto text-xl border border-black text-yellow-950'>FOR HIM</button>
-        <button className='h-auto text-xl border border-black text-yellow-950'>FOR HER</button>
+        <button className='h-auto text-xl border-b border-black text-yellow-950'>FOR HIM</button>
+        <button className='h-auto text-xl border-b border-black text-yellow-950'>FOR HER</button>
       </div>
         <div className="grid grid-cols-4 gap-5 px-8">
         {productsForHim.map((product) => (
