@@ -1,6 +1,82 @@
-import db from '../../db/conection';
+import { createRouter } from 'next-connect';
+/* import db from '../../db/conection'; */
+import Product from '../../models/Products'; // Asegúrate de tener tu modelo importado
 
-export default async function handler(req, res) {
+const router = createRouter();
+
+router
+  .get(async (req, res) => {
+    try {
+        const products = await Product.findAll(); // Ejecuta la consulta a la base de datos
+        res.status(200).json(products); // Envía la respuesta en formato JSON
+      } catch (error) {
+        console.error('Error al obtener productos:', error);
+        res.status(500).json({ error: 'Error al obtener los productos' });
+      }
+    })
+
+  .post(async (req, res) => {
+    const { product_name, fit, material, description, main_image_url, sku } = req.body;
+    if (!product_name || typeof product_name !== 'string') {
+        return res.status(400).json({ error: 'Name is required and must be a string' });
+    }
+    if (!fit || typeof fit !== 'string') {
+        return res.status(400).json({ error: 'Fit is required and must be a string' });
+    }
+    if (!material || typeof material !== 'string') {
+        return res.status(400).json({ error: 'Material is required and must be a string' });
+    }
+    if (!main_image_url || typeof main_image_url !== 'string') {
+        return res.status(400).json({ error: 'A main image url is required and must be a string' });
+    }
+    if (!description || typeof description !== 'string') {
+        return res.status(400).json({ error: 'Description is required and must be a string' });
+    }
+    if (!sku || typeof sku !== 'string') {
+        return res.status(400).json({ error: 'SKU is required and must be a string' });
+    }
+    try {
+        const newProduct = await Product.create({ product_name, fit, material, description, main_image_url, sku });
+        res.status(201).json(newProduct);
+    } catch (error) {
+        res.status(500).json({ error: 'Error creating the product' });
+    }
+  })
+
+  .patch(async (req, res) => {
+    try {
+        const { id: productId } = req.params;
+        const newProductData = req.body
+
+        if (!productId) {
+            return res.status(400).json({ error: 'Product ID is required' });
+        }
+        if (!newProductData || typeof newProductData !== 'object') {
+            return res.status(400).json({ error: 'Product data must be an object' });
+        }
+        
+        const updateProduct = await Product.update( productId, newProductData ); // Ejecuta la consulta a la base de datos
+        if (!updatedProduct) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.status(200).json(updateProduct); // Envía la respuesta en formato JSON
+      } catch (error) {
+        console.error('Error al editar el producto:', error);
+        res.status(500).json({ error: 'Error al editar el producto' });
+      }
+    })
+
+// Manejo de errores
+export default router.handler({
+  onError: (err, req, res) => {
+    console.error(err.stack);
+    res.status(err.statusCode || 500).end(err.message);
+  },
+  onNoMatch: (req, res) => {
+    res.status(404).end('Page is not Found!');
+  },
+});
+/* export default async function handler(req, res) {
     
     if(req.method === 'GET'){
         try {
@@ -90,4 +166,4 @@ export default async function handler(req, res) {
         res.status(405).end(`Method ${req.method} Not Allowed`);
     }
     
-}
+} */
