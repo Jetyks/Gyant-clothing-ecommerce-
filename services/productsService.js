@@ -1,5 +1,58 @@
+export const getAllProducts = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/products');
+        if (!res.ok) throw new Error('Failed to fetch products');
 
+        const products = await res.json();
+        /* console.log(products) */
+        return products;
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        return [];
+      }
+};
 
+/* export const fetchMenProducts = async () => {
+    try {
+        const response = await fetch('/api/products',{
+            method: 'GET', // Especifica el método
+            headers: {
+                'Content-Type': 'application/json' // Establece el tipo de contenido
+            },
+            body: JSON.stringify(productData) // Convierte los datos del producto a JSON
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        throw error; // Re-lanzar el error para que el llamador pueda manejarlo
+    }
+};
+
+export const createProduct = async (productData) => {
+    try {
+        const response = await fetch('/api/products', {
+            method: 'POST', // Especifica el método como POST
+            headers: {
+                'Content-Type': 'application/json' // Establece el tipo de contenido
+            },
+            body: JSON.stringify(productData) // Convierte los datos del producto a JSON
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return data; // Devuelve la respuesta del servidor, si es necesario
+    } catch (error) {
+        console.error("Error creating product:", error);
+        throw error; // Re-lanzar el error para que el llamador pueda manejarlo
+    }
+};
 export const productsForMen = [
     {
         id: 1,
@@ -322,3 +375,4 @@ export const productsForMen = [
         ]
     }
     ]
+ */
