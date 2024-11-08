@@ -16,6 +16,7 @@ exports.up = async function(knex) {
         table.string('sku', 100).notNullable();
         table.boolean('isActive').defaultTo(true);
         table.timestamp('created_at').defaultTo(knex.fn.now());
+        table.string('gender', 50).notNullable();
       });
   
       // Cambia el valor inicial de la secuencia en PostgreSQL
