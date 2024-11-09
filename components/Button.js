@@ -7,7 +7,7 @@ const Button = ({
   onClick, 
   isSelected, 
   color, 
-  hoverBgColor, 
+  hoverBgColor,
   borderColor, 
   backgroundColor 
 }) => {
