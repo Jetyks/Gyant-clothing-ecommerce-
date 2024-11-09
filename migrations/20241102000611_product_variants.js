@@ -14,7 +14,6 @@ exports.up = async function(knex) {
             table.integer('stock').defaultTo(0); // Para controlar el inventario por variante
             table.decimal('price', 10, 2).notNullable(); // Precio específico para esta variante
             table.string('variant_sku', 100).notNullable().unique();
-            table.string('variant_image_url', 200).notNullable()
           });
     }
   };
