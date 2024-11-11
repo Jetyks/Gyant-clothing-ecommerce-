@@ -5,6 +5,25 @@ const initialState = {
 }
 const CartContext = createContext();
 
+const cartReducer = (state, action) => {
+    switch(action.type){
+        // Añadir un producto al carrito
+        case 'ADD_TO_CART':
+            return {
+                ...state, cart: [...state.cart, action.payload]
+            }
+        // Eliminar un producto del carrito
+        case 'REMOVE_FROM_CART':
+            return {
+                ...state,
+                cart: state.cart.filter(item => item.id !== action.payload)
+            }
+            // Devolver el estado actual si no se reconoce la acción
+            default:
+                return state
+    }
+}
+
 const CartProvider = ({children}) =>{
     const [state, dispatch] = useReducer(cartReducer, initialState)
 
