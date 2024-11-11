@@ -11,6 +11,32 @@ export const getAllProducts = async () => {
         return [];
       }
 };
+export const getAllMaleProducts = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/products?gender=Male');
+        if (!res.ok) throw new Error('Failed to fetch male products');
+
+        const products = await res.json();
+        /* console.log(products) */
+        return products;
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        return [];
+      }
+};
+export const getAllFemaleProducts = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/products?gender=Female');
+        if (!res.ok) throw new Error('Failed to fetch female products');
+
+        const products = await res.json();
+        /* console.log(products) */
+        return products;
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        return [];
+      }
+};
 
 /* export const fetchMenProducts = async () => {
     try {
