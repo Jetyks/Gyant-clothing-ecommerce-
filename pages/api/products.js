@@ -1,22 +1,24 @@
 import { createRouter } from 'next-connect';
 /* import db from '../../db/conection'; */
-import Product from '../../models/Products'; // Asegúrate de tener tu modelo importado
+import Product from '../../models/Products';
 
 const router = createRouter();
 
 router
   .get(async (req, res) => {
+    const { gender } = req.query; // Obtiene el parámetro 'gender' de la URL, si está presente
+  
     try {
-        const products = await Product.findAll(); // Ejecuta la consulta a la base de datos
-        res.status(200).json(products); // Envía la respuesta en formato JSON
-      } catch (error) {
-        console.error('Error al obtener productos:', error);
-        res.status(500).json({ error: 'Error al obtener los productos' });
-      }
-    })
+      const products = await Product.findAll(gender); // Llama a la función findAll del modelo con el parámetro de género
+      res.status(200).json(products);
+    } catch (error) {
+      console.error('Error al obtener productos:', error);
+      res.status(500).json({ error: 'Error al obtener los productos' });
+    }
+  })
 
   .post(async (req, res) => {
-    const { product_name, fit, material, description, main_image_url, sku } = req.body;
+    const { product_name, fit, material, description, main_image_url, sku, variants, gender } = req.body;
     if (!product_name || typeof product_name !== 'string') {
         return res.status(400).json({ error: 'Name is required and must be a string' });
     }
@@ -35,12 +37,21 @@ router
     if (!sku || typeof sku !== 'string') {
         return res.status(400).json({ error: 'SKU is required and must be a string' });
     }
-    try {
-        const newProduct = await Product.create({ product_name, fit, material, description, main_image_url, sku });
-        res.status(201).json(newProduct);
-    } catch (error) {
-        res.status(500).json({ error: 'Error creating the product' });
+    if (!gender || typeof gender !== 'string') {
+        return res.status(400).json({ error: 'Gender is required and must be a string' });
     }
+    /* if (!variants || typeof variants !== 'object') {
+        return res.status(400).json({ error: 'Object is required and must be an object' });
+    } */
+        try {
+            // Llamada a la función `addProduct` con los datos del producto
+            const newProduct = await Product.addProduct({ product_name, fit, material, description, main_image_url, sku, variants, gender });
+            res.status(201).json(newProduct);
+        } catch (error) {
+            // Enviar un error detallado en la respuesta y en los logs para depuración
+            console.error('Error creating the product:', error);
+            res.status(500).json({ error: 'Error creating the product', details: error.message });
+        }
   })
 
   .patch(async (req, res) => {
@@ -55,11 +66,11 @@ router
             return res.status(400).json({ error: 'Product data must be an object' });
         }
         
-        const updateProduct = await Product.update( productId, newProductData ); // Ejecuta la consulta a la base de datos
+        const updateProduct = await Product.update( productId, newProductData ); // Manda a llamar la funcion al modelo
         if (!updatedProduct) {
             return res.status(404).json({ error: 'Product not found' });
         }
-        res.status(200).json(updateProduct); // Envía la respuesta en formato JSON
+        res.status(200).json(updateProduct);
       } catch (error) {
         console.error('Error al editar el producto:', error);
         res.status(500).json({ error: 'Error al editar el producto' });
