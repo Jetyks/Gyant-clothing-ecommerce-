@@ -10,20 +10,20 @@ import ProductGallery from '../../components/ProductGallery'
 const ProductDetails= () => {
     const router = useRouter()
     const {id} = router.query
-    const {productsForHim} = useProducts()
+    const {allProducts} = useProducts()
     
     const [product, setProduct] = useState(null);
-    /* const [selectedImage, setSelectedImage] = useState(mainImage); */
+    
 
 
     useEffect(() => {
-      console.log('Products:', productsForHim); 
+      /* console.log('Products:', productsForHim);  */
       if (id) {
           const productId = parseInt(id);
-          const foundProduct = productsForHim.find((product) => product.product_id === productId);
+          const foundProduct = allProducts.find((product) => product.product_id === productId);
           setProduct(foundProduct);
       }
-  }, [id, productsForHim]);
+  }, [id, allProducts]);
 
     if (!id) return <div> Cargando...</div>;
     if (!product) return <div>Producto no encontrado.</div>
