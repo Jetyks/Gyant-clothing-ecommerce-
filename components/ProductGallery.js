@@ -16,7 +16,7 @@ const ProductGallery = ({product}) => {
     imageUrl: variant.image_url // propiedad que identifica a la variante
   })),
 ];
-console.log("Hola soy todas las imgs pendejas",allImages)
+/* console.log("Hola soy todas las imagenes",allImages) */
 
 return (
   <div className='flex flex-row justify-center gap-4 px-4 h-full w-full'>
@@ -24,6 +24,7 @@ return (
       {allImages.map((variant, index) => (
         <Thumbnail
           key={index}
+          /* alt={variant.name} */
           image={variant.imageUrl}  // Usamos imageUrl directamente de allImages
           onClick={() => handleImageClick(variant.imageUrl)}
           isSelected={selectedImage === variant.imageUrl}
