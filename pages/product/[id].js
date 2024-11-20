@@ -6,13 +6,15 @@ import { useEffect, useState } from 'react'
 import Button from '../../components/Button'
 
 import ProductGallery from '../../components/ProductGallery'
+import { useCart } from '../../context/CartContext'
 
 const ProductDetails= () => {
     const router = useRouter()
     const {id} = router.query
     const {allProducts} = useProducts()
-    
+    const {addToCart} = useCart()
     const [product, setProduct] = useState(null);
+    const [selectedSize, setSelectedSize] = useState(null);
     
 
 
@@ -27,6 +29,22 @@ const ProductDetails= () => {
 
     if (!id) return <div> Cargando...</div>;
     if (!product) return <div>Producto no encontrado.</div>
+
+    const sizes = Array.from(new Set(product.variants.map(variant => variant.size)));
+
+    const handleSizeSelect = (size) => {
+      setSelectedSize(size);
+    };
+
+    const handleAddToCart = () => {
+      if (!selectedSize) {
+          alert('Por favor selecciona una talla.');
+          return;
+      }
+      console.log({ ...product, selectedSize })
+      addToCart({ ...product, selectedSize });
+    };
+
   return (
     <>
       <Head>
@@ -48,11 +66,15 @@ const ProductDetails= () => {
                 <h4 className='text-base'>Size guide</h4>
               </div>
               <div className='mt-2 flex flex-row gap-2 h-10 w-full'>
-                <SizeList/>
+                <SizeList sizes={sizes} onSizeSelect={handleSizeSelect} selectedSize={selectedSize}/>
               </div>
               <div className='mt-5 flex flex-col gap-2 h-28 w-full'>
-                  <Button title='Buy now' color='white' hoverBgColor='yellow-900' borderColor='none' backgroundColor='yellow-950'/>
-                  <Button title='Add to cart' color='yellow-950' hoverBgColor='gray-50' borderColor='yellow-900' />
+                  <Button title='Buy now' color='white' hoverBgColor='yellow-900' borderColor='none' backgroundColor='yellow-950'
+          
+                  />
+                  <Button title='Add to cart' color='yellow-950' hoverBgColor='gray-50' borderColor='yellow-900' 
+                   onClick={handleAddToCart}
+                  />
               </div>
               <div className='mt-6 flex flex-col gap-3'>
                 <p><span className='font-medium'>MATERIAL:</span>{product.material}</p>
