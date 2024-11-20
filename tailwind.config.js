@@ -17,6 +17,8 @@ module.exports = {
   },
   safelist: [
     'text-white',
+    'hover:border-yellow-900',
+    'hover:border-yellow-950',
     'hover:bg-yellow-900',
     'border-none',
     'bg-yellow-950',
