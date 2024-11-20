@@ -11,10 +11,11 @@ const CartComponent = () => {
     const existingProduct = acc.find(item => item.product_id === product.product_id && item.size === product.size);
     
     if (existingProduct) {
-      console.log(groupedCartItems)
-      existingProduct.quantity += 1;
+      // Incrementa la cantidad en función del producto existente
+      existingProduct.quantity += product.quantity || 1; // Usa product.quantity si existe
     } else {
-      acc.push({ ...product, quantity: 1 });
+      // Agrega un nuevo producto respetando su quantity original
+      acc.push({ ...product, quantity: product.quantity || 1 });
     }
     return acc;
   }, []);
@@ -27,11 +28,13 @@ const CartComponent = () => {
         <CartListCard>
           {groupedCartItems.map((product) => {
             const productNumber = product.product_id + 500;
+            console.log(groupedCartItems)
             return (
               <CartProductCard
                 key={product.product_id}
                 productId={product.product_id}
                 productNumber={productNumber}
+                productQuantity={product.quantity}
                 productImage={product.main_image_url}
                 productTitle={product.product_name}
                 productPrice={product.variants[0].price}

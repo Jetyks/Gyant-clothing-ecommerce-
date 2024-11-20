@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import QuantityControl from './QuantityControl';
 
-const CartProductCard = ({ productId, productNumber, productImage, productTitle, productPrice}) => {
+const CartProductCard = ({ productId, productNumber, productQuantity, productImage, productTitle, productPrice}) => {
   const productTitleCard = `${productTitle}`
   return (
     <Link href={`/product/${productId}`}>
@@ -20,8 +21,8 @@ const CartProductCard = ({ productId, productNumber, productImage, productTitle,
                         <p className="pl-2 text-normal font-normal text-yellow-950 opacity-90">{"S"}</p>
                     </div>
                 </div>
-                <div className='h-full w-3/12 '>
-                    si
+                <div className='h-10 w-3/12 px-7 '>
+                    <QuantityControl quantity={productQuantity}/>
                 </div>
                 <div className='h-full w-3/12 '>
                     <h3 className="text-lg font-medium text-yellow-950 text-center">${productPrice || "99"}</h3>
