@@ -3,7 +3,7 @@ import Thumbnail from './Thumbnail'
 import MainImage from './MainImage';
 
 const ProductGallery = ({product}) => {
-  console.log("Hola soy el producto ", product.images)
+  /* console.log("Hola soy el producto ", product.images) */
     const [selectedImage, setSelectedImage] = useState(product.main_image_url);
     const handleImageClick = (image) => {
         setSelectedImage(image);

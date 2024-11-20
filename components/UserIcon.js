@@ -3,7 +3,7 @@ import userIcon from '../assets/images/user-img.png'; // Next.js gestionará la 
 
 const UserIcon = () => {
   return (
-    <Icon icon={userIcon} altText="User Icon" />
+    <Icon icon={userIcon} alt="User Icon" />
   );
 };
 
