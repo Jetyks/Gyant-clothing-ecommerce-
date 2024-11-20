@@ -29,6 +29,15 @@ function cartReducer(state, action) {
       // Si no existe, lo agrega con la cantidad especificada o 1 por defecto
       return [...state, { ...action.payload, quantity: action.payload.quantity || 1 }];
 
+    case "REMOVE_ONE_FROM_CART":
+      return state
+        .map(item =>
+          item.product_id === action.payload.product_id
+            ? { ...item, quantity: item.quantity - 1 } // Reduce la cantidad en 1
+            : item
+        )
+        .filter(item => item.quantity > 0); // Elimina productos con cantidad 0
+
     case "REMOVE_ITEM":
       return state.filter(item => item.id !== action.payload.product_id);
 
@@ -62,8 +71,15 @@ function CartProvider({ children }) {
     })
   }
 
+  const removeOneFromCart = (productId) => {
+    dispatch({
+      type: "REMOVE_ONE_FROM_CART",
+      payload: { product_id: productId },
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, dispatch, addToCart }}>
+    <CartContext.Provider value={{ cart, dispatch, addToCart, removeOneFromCart }}>
       {children}
     </CartContext.Provider>
   );
