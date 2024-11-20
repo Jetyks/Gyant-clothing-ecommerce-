@@ -9,12 +9,11 @@ const NavBar = () => {
   return (
     <>
       <nav className="relative flex justify-end items-center h-16 bg-white border-none px-4 py-2.5" >
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center shadow">
           {/* Logo */}
           <a href="/" className="text-3xl font-bold text-yellow-950 col-start-5 col-span-4 font-maven">
             {/* Y O U N G L A */}
             G Y A N T
-            {/* V A R A D O */}
           </a>
         </div>
         <div className='relative h-4/5 w-36 flex justify-center items-center z-50 mr-3'>
