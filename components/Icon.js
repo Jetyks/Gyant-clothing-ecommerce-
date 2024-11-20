@@ -1,14 +1,14 @@
 
 import Image from 'next/image';
 
-const Icon = ({icon}) => {
+const Icon = ({alt, icon}) => {
     
   return (
     <div className='flex
     justify-center
     items-center
     w-full h-full border-hidden rounded-full hover:bg-customYellow'>
-        <Image className='
+        <Image alt={alt} className='
         flex
         content-center items-center
         h-3/4
