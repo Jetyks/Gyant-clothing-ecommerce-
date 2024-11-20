@@ -8,7 +8,7 @@ const BagIcon = () => {
   const { cart } = useCart();
   const [isMounted, setIsMounted] = useState(false);
   const [productsNumber, setProductsNumber] = useState(0)
-  console.log(cart)
+ /*  console.log(cart) */
 
   useEffect(() => {
     const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
