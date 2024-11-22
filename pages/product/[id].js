@@ -48,9 +48,9 @@ const ProductDetails= () => {
   return (
     <>
       <Head>
-        <title>GYANT</title>
+        <title>{product.product_name}</title>
       </Head>
-      <div className='mt-10 flex flex-row h-auto px-24 '>
+      <div className='mt-10 flex flex-row h-auto px-24 pb-11'>
         <div className='h-[540px] w-auto'>
           <ProductGallery product={product}/>
         </div>

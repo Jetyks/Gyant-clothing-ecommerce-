@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard"
 import { useProducts } from "../context/ProductsContext"
+import Head from "next/head";
 
 
 const Home = () => {
@@ -29,6 +30,9 @@ const Home = () => {
   else if (loading === false && genderProducts){
     return (
       <>
+      <Head>
+        <title>Gyant Store</title>
+      </Head>
       <section>
         <div className='flex justify-center items-center gap-7 h-24 bg-gray-50 '>
           <button className='h-auto text-xl border-b border-black text-yellow-950'
