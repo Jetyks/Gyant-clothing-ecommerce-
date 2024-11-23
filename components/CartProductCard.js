@@ -5,7 +5,7 @@ const CartProductCard = ({ productId, productNumber, productQuantity, productIma
   const productTitleCard = `${productTitle}`
   const totalProductPrice = productPrice*productQuantity;
   return (
-      <div className="flex flex-row h-44 w-full group py-5 border-t-2 border-[rgba(113,63,18,0.2)]">
+      <div className="flex flex-row h-44 w-full group py-5 border-t border-[rgba(113,63,18,0.2)]">
                 <div className='h-auto w-30 cursor-pointer'>
                     <Link href={`/product/${productId}`}>
                         <img 
