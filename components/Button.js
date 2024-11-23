@@ -11,7 +11,9 @@ const Button = ({
   color, 
   hoverBgColor,
   borderColor, 
-  backgroundColor 
+  backgroundColor,
+  textSize,
+  borderRadius
 }) => {
   const buttonClasses = classNames(
     'w-full h-full border-2 transition-opacity duration-150', 
@@ -25,7 +27,9 @@ const Button = ({
     hoverBgColor ? `hover:bg-${hoverBgColor}` : '', // Aplica hover background solo si se proporciona `hoverBgColor`
     borderColor ? `border-${borderColor}` : '', // Aplica border color solo si se proporciona `borderColor`
     backgroundColor ? `bg-${backgroundColor}` : '', // Aplica background solo si se proporciona `backgroundColor`
-    hoverBorderColor ? `hover:border-${hoverBorderColor}` : ''
+    hoverBorderColor ? `hover:border-${hoverBorderColor}` : '',
+    borderRadius ? `rounded-${borderRadius}` : '',
+    textSize ? `text-${textSize}` : ''
   );
 
   return (
