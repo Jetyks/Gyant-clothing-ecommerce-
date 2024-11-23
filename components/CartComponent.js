@@ -2,6 +2,7 @@ import { useCart } from '../context/CartContext';
 import { useEffect, useState } from 'react';
 import CartProductCard from './CartProductCard';
 import CartListCard from './CartListCard';
+import OrderSummary from './OrderSummary'
 
 const CartComponent = () => {
   const { cart } = useCart();
@@ -55,8 +56,8 @@ const CartComponent = () => {
           })}
         </CartListCard>
       </div>
-      <div className='bg-white w-3/12 h-full border-2 border-[rgba(113,63,18,0.2)] rounded-md ml-7'>
-        <h3 className='text-2xl text-yellow-950 pl-5'>Resumen del pedido</h3>
+      <div className='bg-white w-4/12 h-full ml-7'>
+        <OrderSummary/>
       </div>
     </div>
   );
