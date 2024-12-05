@@ -32,7 +32,10 @@ const CartComponent = () => {
     return acc;
   }, []);
 
- 
+  const totalCartPrice = groupedCartItems.reduce((total, product) => {
+    const totalProductPrice = product.variants[0].price * product.quantity;
+    return total + totalProductPrice;
+  }, 0);
 
   return (
     <div className='flex flex-row bg-white h-auto px-20 mt-8'>
@@ -57,7 +60,7 @@ const CartComponent = () => {
         </CartListCard>
       </div>
       <div className='bg-white w-4/12 h-full ml-7'>
-        <OrderSummary/>
+        <OrderSummary totalCartPrice={totalCartPrice}/>
       </div>
     </div>
   );
