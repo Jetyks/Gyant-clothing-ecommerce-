@@ -9,10 +9,10 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: process.env.DB_HOST_DEV,
-      database: process.env.DB_NAME_DEV,
-      user: process.env.DB_USER_DEV,
-      password: process.env.DB_PASS_DEV,
+      host: process.env.DB_HOST,
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
       port: process.env.DB_PORT,
     },
     pool: {
@@ -30,9 +30,11 @@ module.exports = {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: process.env.DB_HOST,
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      port: process.env.DB_PORT,
     },
     pool: {
       min: 2,
@@ -46,9 +48,11 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: process.env.DB_HOST,
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      port: process.env.DB_PORT,
     },
     pool: {
       min: 2,
