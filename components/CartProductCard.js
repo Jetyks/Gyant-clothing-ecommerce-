@@ -2,8 +2,15 @@ import Link from 'next/link';
 import QuantityControl from './QuantityControl';
 
 const CartProductCard = ({ productId, productNumber, productQuantity, productImage, productTitle, productPrice}) => {
+   /*  console.log(productPrice) */
   const productTitleCard = `${productTitle}`
   const totalProductPrice = productPrice*productQuantity;
+
+  //funcion para agregar 2 decimales y un simbolo de dolar al precio (no tiene utilidad, solo es estetico)
+  const formatPrice = (price) => {
+    return `$${price.toFixed(2)}`;
+  };
+
   return (
       <div className="flex flex-row h-44 w-full group py-5 border-t border-[rgba(113,63,18,0.2)]">
                 <div className='h-auto w-30 cursor-pointer'>
@@ -29,7 +36,7 @@ const CartProductCard = ({ productId, productNumber, productQuantity, productIma
                     <QuantityControl productId={productId} quantity={productQuantity}/>
                 </div>
                 <div className='h-full w-3/12 '>
-                    <h3 className="text-lg font-medium text-yellow-950 text-center">${totalProductPrice}</h3>
+                    <h3 className="text-lg font-medium text-yellow-950 text-center">{formatPrice(totalProductPrice)}</h3>
                 </div>
             </div>
         </div>
