@@ -1,22 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './Button'
 const OrderSummary = ({totalCartPrice}) => {
-    const shippingCost = 12.99
-  //funcion para agregar 2 decimales y un simbolo de dolar al precio (no tiene utilidad, solo es estetico)
-  const formatPrice = (price) => {
-    return `$${price.toFixed(2)}`;
-  };
-  
-  const calculeTotalOrderPrice = ( ship, cartPrice, discount ) =>{
-    const cartAndShipPrice = ship + cartPrice;
-    if(discount){
-        const totalOrderWithDiscount = cartAndShipPrice - discount;
-        return totalOrderWithDiscount
-    }
-    return cartAndShipPrice
-  }
+  const [shippingCost, setShippingCost] = useState(null);
+  const [totalOrderPrice, setTotalOrderPrice] = useState(null);
 
-  const totalOrderPrice = calculeTotalOrderPrice(shippingCost, totalCartPrice, 0)
+  // Llamar a la API para calcular el precio del pedido
+  useEffect(() => {
+    const calculateOrder = async () => {
+      try {
+        const response = await fetch("/api/order/calculate-price", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ cartPrice: totalCartPrice }),
+        });
+
+        const data = await response.json();
+        setShippingCost(data.shippingCost);
+        setTotalOrderPrice(data.totalOrderPrice);
+      } catch (error) {
+        console.error("Error al calcular el pedido:", error);
+      }
+    };
+
+    calculateOrder();
+  }, [totalCartPrice]);
+
+  //funcion para agregar 2 decimales y un simbolo de dolar al precio (no tiene utilidad, solo es estetico)
+  const formatPrice = (price) => (price ? `$${price.toFixed(2)}` : "$0");
 
   return (
     <div className=' h-auto w-auto px-2 text-yellow-950'>
