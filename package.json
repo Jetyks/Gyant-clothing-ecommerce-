@@ -13,17 +13,21 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@next/font": "14.2.15",
+    "@supabase/supabase-js": "^2.47.3",
+    "bcrypt": "^5.1.1",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.5",
     "eslint": "8.57.1",
     "eslint-config-next": "14.2.15",
     "framer-motion": "^11.11.9",
+    "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "next": "14.2.15",
     "next-connect": "^1.0.0",
     "pg": "^8.13.1",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "react-hook-form": "^7.54.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
